@@ -45,7 +45,7 @@ EndIf
 #include "COCBot\functions\Chatbot\Chatbot.au3"
 
 $sBotVersion = "v5.3.2 Mod" ;~ Don't add more here, but below. Version can't be longer than vX.y.z because it it also use on Checkversion()
-$sBotTitle = "Merged My Bot " & $sBotVersion & " All In One v1.3.0 " ;~ Don't use any non file name supported characters like \ / : * ? " < > |
+$sBotTitle = "Merged My Bot " & $sBotVersion & " All In One v1.3.1 " ;~ Don't use any non file name supported characters like \ / : * ? " < > |
 
 Global $sBotTitleDefault = $sBotTitle
 
@@ -373,6 +373,21 @@ Func Idle() ;Sequence that runs until Full Army
 		If $RequestScreenshot = 1 Then PushMsg("RequestScreenshot")
 		If _Sleep($iDelayIdle1) Then Return
 		If $CommandStop = -1 Then SetLog("====== Waiting for full army ======", $COLOR_GREEN)
+		
+		; stay offline mode
+		If $stayOfflineWhileTrain = 1 Then
+			If $stayOfflineTime > 3 Then ; go offline if remaining training time takes more than 3 minutes
+				CloseCOC() ; Close COC
+				
+				; Sleeping until troops are training
+				$timewait = ($stayOfflineTime - 1) * 60000				   
+				SetLog("====== Sleeping for " & ($stayOfflineTime - 1) & " Minutes ======", $COLOR_GREEN)                 					
+				If _Sleep($timewait) Then Return				
+						
+				OpenCOC() ; Open COC
+			EndIf
+        EndIf
+
 		Local $hTimer = TimerInit()
 		Local $iReHere = 0
 		While $iReHere < 7
