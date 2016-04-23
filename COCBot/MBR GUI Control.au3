@@ -62,6 +62,7 @@ AtkLogHead()
 #include "GUI\MBR GUI Control Tab Upgrade.au3"
 #include "GUI\MBR GUI Control Tab Notify.au3"
 #include "GUI\MBR GUI Control Tab Expert.au3"
+#include "GUI\MBR GUI Control Tab Scheduler.au3"
 #include "GUI\MBR GUI Control Tab Stats.au3"
 #include "GUI\MBR GUI Control Collectors.au3"
 #include "GUI\MBR GUI Control Milking.au3"
@@ -117,7 +118,7 @@ Func GUIControl($hWind, $iMsg, $wParam, $lParam)
 				Case $DonateConfig
 					ShellExecute("https://mybot.run/forums/index.php?/donate/make-donation/")
 				Case $ModSupportConfig
-					ShellExecute("https://mybot.run/forums/index.php?/topic/17570-updated-merged-mybot-532-all-mods-in-one-v130-20-04-16/")
+					ShellExecute("https://mybot.run/forums/index.php?/topic/17570-new-updates-merged-mybot-532-all-mods-in-one-v132-23-04-16/")
 				Case $AboutConfig
 					OpenGUIAbout()
 				Case $btnDeletePBMessages
