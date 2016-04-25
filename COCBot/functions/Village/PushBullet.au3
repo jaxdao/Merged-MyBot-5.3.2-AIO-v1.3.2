@@ -474,7 +474,7 @@ Func _RemoteControl()
 					 _Push($iOrigPushB & " | " & GetTranslated(18,31,"Request to Resume") & "\n" & GetTranslated(18,94,"Your bot is currently resumed, no action was taken"))
 					EndIf
 				Case GetTranslated(18,5,"Delete") & "\n\ud83d\udeae"
-					$oHTTP2.Open("Get", $url & $access_token2 & "/getupdates?offset=" & $lastuid  , False)
+					$oHTTP2.Open("Get", "https://api.telegram.org/bot" & $access_token2 & "/getupdates?offset=" & $lastuid  , False)
 					$oHTTP2.Send()
 					SetLog("Telegram: Your request has been received.", $COLOR_GREEN)
 				Case GetTranslated(18,102,"Log") & "\n\ud83d\udcd1"
